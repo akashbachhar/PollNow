@@ -1,0 +1,40 @@
+{% extends 'polls/base.html' %}
+
+{% block title %} Poll Now {% endblock %}
+
+{% block css %}
+    <style>
+        .card {
+            margin: 1.5rem auto auto;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 10rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+        {% for question in context %}
+            <div class="card text-center" style="width: 60%;">
+
+                <div class="card-header bg-light">
+                    Poll {{ forloop.counter }}
+                </div>
+                <div class="card-body">
+                    <div class="card-title">{{ question.question_text }} </div>
+                    <a href="{% url 'vote' question.id %}" class="btn btn-primary"> Vote </a>
+                    <a href="{% url 'results' question.id %}" class="btn btn-success"> Result </a>
+                </div>
+            </div>
+        {% endfor %}
+
+        <footer class="footer">
+            Poll Now. All Rights Reserved
+        </footer>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'polls/base.html' %}
+
+{% block title %} Vote {% endblock %}
+
+{% block css %}
+    <style>
+        .card {
+            margin: 1.5rem auto auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+        <div class="card" style="width: 60%;">
+            <div class="card-header text-center">
+                {{ question.question_text }}
+            </div>
+            <form method="post"> {% csrf_token %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <input type="radio" id="choice" name="choice" value="choice1">
+                        <label for="choice"> {{ question.choice_text1 }} </label>
+                    </li>
+
+                    <li class="list-group-item">
+                        <input type="radio" id="choice" name="choice" value="choice2">
+                        <label for="choice"> {{ question.choice_text2 }} </label>
+                    </li>
+
+                    <li class="list-group-item">
+                        <input type="radio" id="choice" name="choice" value="choice3">
+                        <label for="choice"> {{ question.choice_text3 }} </label>
+                    </li>
+                </ul>
+                <div class="card-footer text-center">
+                    <input class="btn btn-danger" type="submit" value="Vote">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

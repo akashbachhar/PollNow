@@ -1,0 +1,55 @@
+{% extends 'polls/base.html' %}
+
+{% block title %} Create Poll {% endblock %}
+
+{% block css %}
+<style>
+    .add_question {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+     .questionForm {
+        width: 60%;
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+    .choice_text {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+    .create {
+        text-align: center;
+        margin-top: 2rem;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+    <form method="post" class="questionForm">
+        {% csrf_token %}
+        <div class="add_question">
+            Add Your Question:
+        </div>
+        <div id="question_text">
+            {{ form.question_text }}
+        </div>
+        <div class="choice_text">
+            {{ form.choice_text1 }}
+        </div>
+        <div class="choice_text">
+            {{ form.choice_text2 }}
+        </div>
+        <div class="choice_text">
+            {{ form.choice_text3 }}
+        </div>
+        <div class="create">
+            <input class="btn btn-danger" type="submit" value="Create Poll">
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

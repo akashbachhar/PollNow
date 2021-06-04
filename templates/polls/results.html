@@ -1,0 +1,53 @@
+{% extends 'polls/base.html' %}
+
+{% block title %} Results {% endblock %}
+
+{% block css %}
+    <style>
+        .progress {
+            margin: 1.5rem auto auto;
+            width: 60%;
+            height: 2rem;
+        }
+
+        .card {
+            margin: 1.5rem auto auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+        <div class="card text-center" style="width: 60%;">
+            <div class="card-header">
+                Poll Result
+            </div>
+            <div class="card-body">
+                <div class="card-title"> {{ question.question_text }}</div>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ percentage_vote1 }}%"
+                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{ question.choice_text1 }}
+                        : {{ question.choice_vote1 }} </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ percentage_vote2 }}%"
+                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{ question.choice_text2 }}
+                        : {{ question.choice_vote2 }}</div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ percentage_vote3 }}%"
+                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> {{ question.choice_text3 }}
+                        : {{ question.choice_vote3 }} </div>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                Total Votes : {{ total_vote }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
